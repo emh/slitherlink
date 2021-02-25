@@ -1,17 +1,18 @@
 <script>
     import { onMount } from 'svelte';
     import GameMaker from './GameMaker.svelte';
+    import GamePlayer from './GamePlayer.svelte';
     import { decode } from './encoder.js';
 
-    let game = null;
+    let board = null;
 
     function parseHash() {
         if (!location.hash) {
-            game = null;
+            board = null;
             return;
         }
 
-        game = decode(location.hash.substring(1));
+        board = decode(location.hash.substring(1));
     }
 
     onMount(parseHash);
@@ -24,10 +25,10 @@
     }
 </style>
 
-<h1>Slitherlink</h1>
+<h1>slitherlink</h1>
 
-{#if game}
-    {JSON.stringify(game)}
+{#if board}
+    <GamePlayer board={board} />
 {:else}
     <GameMaker />
 {/if}

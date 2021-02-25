@@ -1,6 +1,6 @@
 <script>
     import Frame from './Frame.svelte';
-	import Cell from './Cell.svelte';
+	import Cell from './MakerCell.svelte';
     import { encode } from './encoder.js';
 
     const CELL_SIZE = 36;
@@ -75,7 +75,9 @@
 </script>
 
 <style>
-
+    .board {
+        margin-left: 4px;
+    }
 </style>
 
 <p>{rows} x {cols}</p>
