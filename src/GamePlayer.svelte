@@ -26,7 +26,11 @@
         }
     }
 
-    console.log(game);
+    function handleEdgeClick(i, j) {
+        let state = game[i][j];
+
+        game[i][j] = (state + 1) % 3;
+    }
 </script>
 
 <style>
@@ -48,9 +52,9 @@
                 {#if i % 2 === 0 && j % 2 === 0}
                     <Dot />
                 {:else if i % 2 === 0}
-                    <Edge orientation="h" />
+                    <Edge orientation="h" state={cell} on:click={() => handleEdgeClick(i, j)} />
                 {:else if j % 2 === 0}
-                    <Edge orientation="v" />
+                    <Edge orientation="v" state={cell} on:click={() => handleEdgeClick(i, j)} />
                 {:else}
                     <Cell value={cell} />
                 {/if}

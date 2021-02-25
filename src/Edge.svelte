@@ -1,21 +1,40 @@
 <script>
     export let orientation = 'h';
+    export let state = 0;
 </script>
 
 <style>
+    .border {
+        cursor: pointer;
+        border: 0;
+    }
+
     .hborder {
-        border-top: dashed 2px gray;
+        border-top: dashed 2px lightgray;
         height: 2px;
         width: 28px;
         margin: 3px 0;
     }
 
     .vborder {
-        border-left: dashed 2px gray;
+        border-left: dashed 2px lightgray;
         height: 28px;
         width: 2px;
         margin: 0 3px;
     }
+
+    .off {
+        border-color: transparent;
+    }
+
+    .on {
+        border-style: solid;
+    }
 </style>
 
-<div class="border" class:hborder={orientation === 'h'} class:vborder={orientation === 'v'}></div>
+<div class="border"
+    class:on={state === 2}
+    class:off={state === 1}
+    class:hborder={orientation === 'h'}
+    class:vborder={orientation === 'v'} on:click>
+</div>
