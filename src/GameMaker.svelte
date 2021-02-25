@@ -21,7 +21,7 @@
             case ' ':
                 let pos = (active.row * cols + active.col + 1) % (rows * cols);
 
-                board[active.row][active.col] = e.key;
+                board[active.row][active.col] = e.key === ' ' ? 0 : Number(e.key) + 1;
 
                 active.row = Math.floor(pos / cols);
                 active.col = pos % cols;

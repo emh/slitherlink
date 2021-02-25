@@ -1,5 +1,5 @@
 <script>
-    export let value = ' ';
+    export let value = 0;
     export let active = false;
 
     let hovering = false;
@@ -74,10 +74,10 @@
 </style>
 
 <div class="cell" class:hovering class:active on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:click>
-    {#if value === ' '}
+    {#if value === 0}
         &nbsp;
     {:else}
-        {value}
+        {value - 1}
     {/if}
     <div class='corner top-left'></div>
     <div class='corner top-right'></div>
