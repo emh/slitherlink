@@ -38,7 +38,8 @@
     .frame {
         position: relative;
         border: solid 1px transparent;
-        margin: 24px;
+        margin-right: 24px;
+        margin-bottom: 24px;
     }
 
     .handle {

@@ -1,7 +1,38 @@
 <script>
+    import Frame from './Frame.svelte';
 	import Cell from './Cell.svelte';
+    import { encode } from './encoder.js';
 
-    export let board = null;
+    const CELL_SIZE = 36;
+
+    let board = [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ];
+
+    let cols = board[0].length;
+    let rows = board.length;
+
+    function handleFrameResize({ detail: { w, h } }) {
+        cols = Math.floor(w / CELL_SIZE);
+        rows = Math.floor(h / CELL_SIZE);
+
+        board = new Array(rows);
+
+        for (let i = 0; i < rows; i++) {
+            board[i] = new Array(cols);
+
+            for (let j = 0; j < cols; j++) {
+                board[i][j] = 0;
+            }
+        }
+    }
+
+    function handlePlayClick() {
+        location.hash = encode(board);;
+    }
 
     let active = { row: 0, col: 0 };
 
@@ -47,14 +78,20 @@
 
 </style>
 
-<div class="board">
-	{#each board as row, i}
-		<div style="height: 36px;">
-			{#each board[i] as cell, j}
-				<Cell value={board[i][j]} on:click={() => handleClick(i, j)} active={i === active.row && j === active.col} />
-			{/each}
-		</div>
-	{/each}
-</div>
+<p>{rows} x {cols}</p>
+
+<Frame on:resize={handleFrameResize}>
+    <div class="board">
+        {#each board as row, i}
+            <div style="height: 36px;">
+                {#each board[i] as cell, j}
+                    <Cell value={board[i][j]} on:click={() => handleClick(i, j)} active={i === active.row && j === active.col} />
+                {/each}
+            </div>
+        {/each}
+    </div>
+</Frame>
+
+<button on:click={handlePlayClick}>Play</button>
 
 <svelte:window on:keydown={handleKeyDown} />
