@@ -13,6 +13,8 @@
         state: []
     };
 
+    let active = { row: 1, col: 1 };
+
     function initializeGameState() {
         let cols = board[0].length;
         let rows = board.length;
@@ -72,6 +74,42 @@
         initializeGameState();
     }
 
+    function handleCellClick(row, col) {
+        active = {row, col};
+    }
+
+    function handleKeyDown(e) {
+        let rows = board.length;
+        let cols = board[0].length;
+
+        switch (e.key) {
+            case 'ArrowRight':
+                active.col = (active.col + 2) % (cols * 2);
+                break;
+            case 'ArrowLeft':
+                active.col = active.col === 1 ? (2 * cols - 1) : active.col - 2;
+                break;
+            case 'ArrowDown':
+                active.row = (active.row + 2) % (rows * 2);
+                break;
+            case 'ArrowUp':
+                active.row = active.row === 1 ? (2 * rows - 1) : active.row - 2;
+                break;
+            case 'w':
+                handleEdgeClick(active.row - 1, active.col);
+                break;
+            case 'a':
+                handleEdgeClick(active.row, active.col - 1);
+                break;
+            case 's':
+                handleEdgeClick(active.row, active.col + 1);
+                break;
+            case 'd':
+                handleEdgeClick(active.row + 1, active.col);
+                break;
+        }
+    }
+
     onMount(() => {
         loadGameState();
     });
@@ -103,7 +141,7 @@
                 {:else if j % 2 === 0}
                     <Edge orientation="v" state={cell} on:click={() => handleEdgeClick(i, j)} />
                 {:else}
-                    <Cell value={cell} />
+                    <Cell value={cell} on:click={() => handleCellClick(i, j)} active={i === active.row && j === active.col} />
                 {/if}
             {/each}
         </div>
@@ -112,3 +150,5 @@
 
 <button on:click={handleBackClick}>back</button>
 <button on:click={handleRestartClick}>restart</button>
+
+<svelte:window on:keydown={handleKeyDown} />
