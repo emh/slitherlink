@@ -86,8 +86,6 @@
     }
 </style>
 
-<p>{rows} x {cols}</p>
-
 <Frame on:resize={handleFrameResize}>
     <div class="board">
         {#each board as row, i}

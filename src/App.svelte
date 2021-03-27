@@ -29,11 +29,16 @@
         font-size: 48px;
         letter-spacing: 4px;
         font-weight: 100;
+        margin: 0;
+    }
+
+    h3 {
+        font-weight: 100;
     }
 
     .app {
-        padding-top: 100px;
-        padding-left: 100px;
+        padding-top: 32px;
+        padding-left: 64px;
     }
 </style>
 
@@ -43,6 +48,7 @@
     {#if board}
         <GamePlayer board={board} />
     {:else}
+        <h3>new game</h3>
         <GameMaker />
         <GameList />
     {/if}

@@ -3,8 +3,13 @@
 
     const dispatch = createEventDispatcher();
 
+    const CELL_SIZE = 36;
+
     export let w = 144;
     export let h = 144;
+
+    $: cols = Math.floor(w / CELL_SIZE);
+    $: rows = Math.floor(h / CELL_SIZE);
 
     let resizing = false;
     let startX;
@@ -45,7 +50,7 @@
     .handle {
         position: absolute;
         bottom: -24px;
-        right: -24px;
+        right: -64px;
         cursor: pointer;
         user-select: none;
     }
@@ -63,7 +68,7 @@
     <div
         class="handle"
         on:mousedown={handleMouseDown}
-    >&#10529;</div>
+    >&#10529; {rows} x {cols}</div>
 </div>
 
 <svelte:window on:mousemove={resizing && handleMouseMove} on:mouseup={resizing && handleMouseUp} />

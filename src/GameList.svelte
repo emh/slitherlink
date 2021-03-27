@@ -91,6 +91,7 @@
 
     .stats {
         color: lightblue;
+        margin-left: 4px;
     }
 
     .time {
