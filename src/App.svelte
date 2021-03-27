@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import GameMaker from './GameMaker.svelte';
     import GamePlayer from './GamePlayer.svelte';
+    import GameList from './GameList.svelte';
     import { decode } from './encoder.js';
 
     let board = null;
@@ -43,6 +44,7 @@
         <GamePlayer board={board} />
     {:else}
         <GameMaker />
+        <GameList />
     {/if}
 </div>
 
