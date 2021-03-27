@@ -64,6 +64,12 @@
         return 'a long ass time ago';
     }
 
+    function handleDeleteClick(id) {
+        localStorage.removeItem(id);
+
+        loadGames();
+    }
+
     onMount(loadGames);
 </script>
 
@@ -78,7 +84,9 @@
     }
 
     li {
-        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        height: 32px;
     }
 
     .stats {
@@ -88,12 +96,32 @@
     .time {
         color: orange;
     }
+
+    button {
+        display: none;
+        font-size: 12px;
+        margin: 0;
+        margin-left: 4px;
+    }
+
+    li:hover button {
+        display: inline-block;
+    }
 </style>
 
 <h3>saved games</h3>
 
 <ul>
     {#each sortGames(games) as game}
-        <li><a href='#{game.id}'>{game.id}</a> <span class="stats">played <span class="time">{timeAgo(game.updatedAt)}</span> created <span class="time">{timeAgo(game.createdAt)}</span></span></li>
+        <li>
+            <a href='#{game.id}'>{game.id}</a>
+            <span class="stats">
+                played
+                <span class="time">{timeAgo(game.updatedAt)}</span>
+                created
+                <span class="time">{timeAgo(game.createdAt)}</span>
+            </span>
+            <button on:click={() => handleDeleteClick(game.id)}>delete</button>
+        </li>
     {/each}
 </ul>
