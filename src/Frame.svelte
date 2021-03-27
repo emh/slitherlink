@@ -58,7 +58,7 @@
 <div
     class="frame"
     class:resizing
-    style="height: {h+2}px; width: {w+2}px">
+    style="height: {h+4}px; width: {w+6}px">
     <slot></slot>
     <div
         class="handle"

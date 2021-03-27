@@ -23,14 +23,27 @@
         box-sizing: border-box;
         font-family: sans-serif;
     }
+
+    h1 {
+        font-size: 48px;
+        letter-spacing: 4px;
+        font-weight: 100;
+    }
+
+    .app {
+        padding-top: 100px;
+        padding-left: 100px;
+    }
 </style>
 
-<h1>slitherlink</h1>
+<div class="app">
+    <h1>slitherlink</h1>
 
-{#if board}
-    <GamePlayer board={board} />
-{:else}
-    <GameMaker />
-{/if}
+    {#if board}
+        <GamePlayer board={board} />
+    {:else}
+        <GameMaker />
+    {/if}
+</div>
 
 <svelte:window on:hashchange={parseHash} />
