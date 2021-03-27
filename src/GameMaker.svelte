@@ -76,6 +76,7 @@
 
 <style>
     .board {
+        user-select: none;
         margin-left: 4px;
     }
 </style>
@@ -94,6 +95,6 @@
     </div>
 </Frame>
 
-<button on:click={handlePlayClick}>Play</button>
+<button on:click={handlePlayClick}>play</button>
 
 <svelte:window on:keydown={handleKeyDown} />

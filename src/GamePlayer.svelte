@@ -31,12 +31,18 @@
 
         game[i][j] = (state + 1) % 3;
     }
+
+    function handleBackClick() {
+        location.hash = '';
+    }
 </script>
 
 <style>
     .board {
         display: flex;
         flex-direction: column;
+        margin-bottom: 24px;
+        user-select: none;
     }
 
     .row {
@@ -62,3 +68,5 @@
         </div>
     {/each}
 </div>
+
+<button on:click={handleBackClick}>back</button>

@@ -29,12 +29,13 @@
 
     .on {
         border-style: solid;
+        border-color: orange;
     }
 </style>
 
 <div class="border"
-    class:on={state === 2}
-    class:off={state === 1}
+    class:on={state === 1}
+    class:off={state === 2}
     class:hborder={orientation === 'h'}
     class:vborder={orientation === 'v'} on:click>
 </div>
