@@ -31,7 +31,12 @@
     }
 
     function handlePlayClick() {
-        location.hash = encode(board);;
+        const id = encode(board);
+        const gameStr = JSON.stringify({ id, createdAt: Date.now(), state: [] });
+
+        localStorage.setItem(id, gameStr);
+
+        location.hash = id;
     }
 
     let active = { row: 0, col: 0 };

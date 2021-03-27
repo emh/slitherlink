@@ -77,6 +77,10 @@
         padding: 0;
     }
 
+    li {
+        margin-bottom: 4px;
+    }
+
     .stats {
         color: lightblue;
     }
