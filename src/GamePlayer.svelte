@@ -9,6 +9,8 @@
 
     const id = encode(board);
 
+    let showDocs = false;
+
     let game = {
         state: []
     };
@@ -110,6 +112,10 @@
         }
     }
 
+    function handleDocsClick() {
+        showDocs = !showDocs;
+    }
+
     onMount(() => {
         loadGameState();
     });
@@ -150,5 +156,17 @@
 
 <button on:click={handleBackClick}>back</button>
 <button on:click={handleRestartClick}>restart</button>
+<button on:click={handleDocsClick}>docs</button>
+
+{#if showDocs}
+<div class="docs">
+    <p>rules of slitherlink can be found on <a href="https://en.wikipedia.org/wiki/Slitherlink">wikipedia</a></p>
+    <p>using the keyboard, complete the puzzle by marking which edges should be filled in.</p>
+    <p>an edge can be in one of 3 states: filled in, definitely not filled in, or unknown.</p>
+    <p>arrow keyus move the selected square.</p>
+    <p>w, a, s, d toggle the state of the 4 edges around the selected cell.</p>
+    <p>click restart to clear the puzzle back to its initial state.</p>
+</div>
+{/if}
 
 <svelte:window on:keydown={handleKeyDown} />

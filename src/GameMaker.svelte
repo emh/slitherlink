@@ -5,6 +5,7 @@
 
     const CELL_SIZE = 36;
 
+    let showDocs = false;
     let board = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
@@ -77,6 +78,10 @@
                 break;
         }
     }
+
+    function handleDocsClick() {
+        showDocs = !showDocs;
+    }
 </script>
 
 <style>
@@ -99,5 +104,20 @@
 </Frame>
 
 <button on:click={handlePlayClick}>play</button>
+<button on:click={handleDocsClick}>docs</button>
+
+{#if showDocs}
+<div class="docs">
+    <p>to create a new board, resize the empty board above to the desired dimensions.</p>
+    <p>then, using the keyboard, fill in the initial board state.</p>
+    <p>arrow keys move the selected cell.</p>
+    <p>0-3 indicate the number of edges for that cell.</p>
+    <p>space clears the cell.</p>
+    <p>click play when you're ready.</p>
+    <p>all boards are saved in the list below and you can revisit them anytime you want.</p>
+    <p>each board has a unqiue URL that can be shared with friends.</p>
+    <p>rules of slitherlink can be found on <a href="https://en.wikipedia.org/wiki/Slitherlink">wikipedia</a></p>
+</div>
+{/if}
 
 <svelte:window on:keydown={handleKeyDown} />
