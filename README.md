@@ -9,3 +9,5 @@ the version here let's you create a play these puzzles in your web browser.
 puzzle state is stored in localstorage so you can always come back and pick up where you left off.
 
 the game was built using the [Svelte](https://svelte.dev/) front end framework.
+
+play online [here](http://emh.io/slitherlink)
