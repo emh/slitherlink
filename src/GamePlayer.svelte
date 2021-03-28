@@ -103,10 +103,10 @@
             case 'a':
                 handleEdgeClick(active.row, active.col - 1);
                 break;
-            case 's':
+            case 'd':
                 handleEdgeClick(active.row, active.col + 1);
                 break;
-            case 'd':
+            case 's':
                 handleEdgeClick(active.row + 1, active.col);
                 break;
         }
